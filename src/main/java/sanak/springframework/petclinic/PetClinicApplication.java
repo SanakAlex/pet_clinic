@@ -1,4 +1,4 @@
-package sanak.springframework.pet_clinic;
+package sanak.springframework.petclinic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package sanak.springframework.pet_clinic;
+package sanak.springframework.petclinic;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
