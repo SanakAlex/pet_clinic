@@ -17,7 +17,7 @@
 
   <groupId>sanak.springframework</groupId>
   <artifactId>pet_clinic</artifactId>
-  <version>0.0.3-SNAPSHOT</version>
+  <version>0.0.3</version>
   <name>pet_clinic</name>
   <description>Pet Clinic training app</description>
 
@@ -45,6 +45,6 @@
 
   <scm>
     <developerConnection>scm:git:https://github.com/SanakAlex/pet_clinic.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>pet_clinic-0.0.3</tag>
   </scm>
 </project>
