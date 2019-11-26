@@ -2,10 +2,11 @@ package sanak.springframework.petclinic.services.map;
 
 import sanak.springframework.petclinic.model.Pet;
 import sanak.springframework.petclinic.services.CrudService;
+import sanak.springframework.petclinic.services.PetService;
 
 import java.util.Set;
 
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
 
   @Override
