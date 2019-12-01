@@ -1,13 +1,20 @@
 package sanak.springframework.petclinic.services.map;
 
+import sanak.springframework.petclinic.model.BaseEntity;
+
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 import java.util.Set;
 
-public abstract class AbstractMapService<T, ID> {
+public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
 
-  protected Map<ID, T> map = new HashMap<>();
+  private final Long ONE = 1L;
+
+  protected Map<Long, T> map = new HashMap<>();
 
   Set<T> findAll() {
     return new HashSet<>(map.values());
@@ -17,8 +24,16 @@ public abstract class AbstractMapService<T, ID> {
     return map.get(id);
   }
 
-  T save(ID id, T object) {
-    map.put(id, object);
+  T save(T object) {
+    if (Objects.nonNull(object)) {
+      Long objectId = object.getId();
+      if (Objects.isNull(objectId)) {
+        object.setId(getNextId());
+      }
+      map.put(object.getId(), object);
+    } else {
+      throw new RuntimeException("Object can not be null");
+    }
     return object;
   }
 
@@ -27,6 +42,14 @@ public abstract class AbstractMapService<T, ID> {
   }
 
   void delete(T object) {
-    map.entrySet().removeIf(entry -> entry.equals(object));
+    map.entrySet().removeIf(entry -> entry.getValue().equals(object));
+  }
+
+  private Long getNextId() {
+    try {
+      return Collections.max(map.keySet()) + 1;
+    } catch (NoSuchElementException e) {
+      return 1L;
+    }
   }
 }
