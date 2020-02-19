@@ -1,19 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'vets')}">
 <head>
   <meta charset="UTF-8">
   <title>List of Vets</title>
 </head>
-<style>
-  .centered{
-    text-align: center;
-  }
-</style>
 
 <body>
-<h1 class="centered" th:text="'List of Vets'"></h1>
+<h2 th:text="'List of Vets'"></h2>
 
-<table class="centered" style="margin: auto">
+<table class="table table-stripped" >
   <thead>
   <tr>
     <th>Id</th>
