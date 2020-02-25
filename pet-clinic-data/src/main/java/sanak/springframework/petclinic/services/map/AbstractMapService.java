@@ -12,8 +12,6 @@ import java.util.Set;
 
 public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
 
-  private final Long ONE = 1L;
-
   protected Map<Long, T> map = new HashMap<>();
 
   Set<T> findAll() {
