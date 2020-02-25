@@ -2,8 +2,8 @@ package sanak.springframework.petclinic.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import sanak.springframework.petclinic.services.OwnerService;
 
 @Controller
@@ -16,9 +16,14 @@ public class OwnerController {
     this.ownerService = ownerService;
   }
 
-  @RequestMapping(method = RequestMethod.GET, path = {"", "/", "/index", "/index.html"})
+  @GetMapping({"", "/", "/index", "/index.html"})
   public String listVets(Model model) {
     model.addAttribute("owners", ownerService.findAll());
     return "owners/index";
+  }
+
+  @GetMapping("/find")
+  public String findOwners() {
+    return "notimplemented";
   }
 }
