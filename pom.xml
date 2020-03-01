@@ -32,6 +32,13 @@
     <wro4j.version>1.8.0</wro4j.version>
   </properties>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
   <build>
     <plugins>
       <plugin>

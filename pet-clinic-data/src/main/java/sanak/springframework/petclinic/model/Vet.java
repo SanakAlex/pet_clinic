@@ -1,5 +1,11 @@
 package sanak.springframework.petclinic.model;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Entity;
@@ -9,6 +15,10 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+@Data
+@SuperBuilder
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "vets")
 public class Vet extends Person {
@@ -19,13 +29,11 @@ public class Vet extends Person {
       joinColumns = @JoinColumn(name = "vet_id"),
       inverseJoinColumns = @JoinColumn(name = "speciality_id")
   )
+  @Builder.Default
   private Set<Speciality> specialities = new HashSet<>();
 
-  public Set<Speciality> getSpecialities() {
-    return specialities;
-  }
-
-  public void setSpecialities(Set<Speciality> specialities) {
-    this.specialities = specialities;
+  public Vet addSpeciality(Speciality speciality) {
+    this.specialities.add(speciality);
+    return this;
   }
 }
