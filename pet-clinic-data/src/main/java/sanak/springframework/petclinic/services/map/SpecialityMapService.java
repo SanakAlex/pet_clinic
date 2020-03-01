@@ -7,7 +7,7 @@ import sanak.springframework.petclinic.services.SpecialityService;
 import java.util.Set;
 
 @Service
-public class SpecialityServiceMap extends AbstractMapService<Speciality, Long> implements
+public class SpecialityMapService extends AbstractMapService<Speciality, Long> implements
     SpecialityService {
 
   @Override
